@@ -5,7 +5,7 @@ class CreateTaskComponent extends Component {
         return (
             <div className="createTask">
                 <h2>Create Task</h2>
-                Enter a Task: <input type="text"/>
+                    Enter a Task: <input type="text"/>
                 <button className="btn btn-primary">Create</button>
             </div>
         )

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import {Switch, Route, Link} from 'react-router-dom';
 import LoginComponent from './Components/LoginComponent';
 import RegistrationComponent from './Components/RegComponent';
 import CreateTaskComponent from './Components/CreateTaskComponent';
+import HomeComponent from './Components/HomeComponent'
+
 import './App.css';
 
 
@@ -10,20 +13,22 @@ class App extends Component {
     return (
       <div className="App container">   
           <h1>TODO APP</h1>
-          <LoginComponent />
-          <RegistrationComponent />
-          <CreateTaskComponent />
-
-          <div className="displayTasks">
-            <h2>Tasks</h2>
+          <nav className = "nav-menu">
             <ul>
-              {
-                this.props.todos.map(todo => {
-                  return <li key={todo.id}><input type="checkbox"/> {todo.name}</li>
-                })
-              }
+              <li><Link to="/">Home</Link></li> |
+              <li><Link to="/login">Login</Link></li> |
+              <li><Link to="/register">Register</Link></li> |
+              <li><Link to="/add">Add</Link></li>
             </ul>
-          </div>
+          </nav>
+
+          <Switch>
+            <Route exact path="/" component = {() => <HomeComponent todos={this.props.todos}/>}/>
+            <Route path="/login" component = {LoginComponent}/>
+            <Route path="/register" component = {RegistrationComponent}/>
+            <Route path="/add" component = {CreateTaskComponent}/>
+          </Switch>
+          
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 // import registerServiceWorker from './registerServiceWorker';
+import {BrowserRouter} from 'react-router-dom';
 
 const state = {
     todos: [
@@ -12,5 +13,10 @@ const state = {
     ]
 }
 
-ReactDOM.render(<App todos={state.todos}/>, document.getElementById('root'));
+ReactDOM.render(
+    <BrowserRouter>
+        <App todos={state.todos}/>
+    </BrowserRouter>,
+    document.getElementById('root'))
+    ;
 // registerServiceWorker();
