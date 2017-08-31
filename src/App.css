@@ -2,7 +2,7 @@ li {
     list-style-type: none;
 }
 
-.nav-menu ul, li{
+.nav-menu ul, li {
     display: inline;
     padding: 5px;
     cursor: pointer;

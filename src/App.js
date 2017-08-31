@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import {Switch, Route, Link} from 'react-router-dom';
+import React, { Component, PropTypes } from 'react';
 import LoginComponent from './Components/LoginComponent';
 import RegistrationComponent from './Components/RegComponent';
 import CreateTaskComponent from './Components/CreateTaskComponent';
@@ -34,4 +33,36 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  children: PropTypes.object.isRequired
+}
+
 export default App;
+
+
+// /**
+// Redux Flow
+// - Store (One big JS object)
+// - Provider ( Makes the store available to all the components)
+// - Container (Wraps all our reusable components)
+// - Components (State and Presentational components)
+// - Actions (More like event handlers)
+// - Reducers (This updates the store)
+// */
+
+// const store = {
+//   users: [
+//     {
+//       name: 'fortune',
+//       age: 34,
+//       location: 'Lagos'
+//     }
+//   ] 
+// }
+
+// function updatedAgeReducer(action, state) {
+//   switch(action.type) {
+//     case 'UPDATE_AGE':
+//     return {...state, state: action.payload}
+//   }
+// }
