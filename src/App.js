@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import {Switch, Route, Link} from 'react-router-dom';
+// import { connect } from 'react-redux';
 import LoginComponent from './Components/LoginComponent';
 import RegistrationComponent from './Components/RegComponent';
 import CreateTaskComponent from './Components/CreateTaskComponent';
@@ -22,7 +24,8 @@ class App extends Component {
           </nav>
 
           <Switch>
-            <Route exact path="/" component = {() => <HomeComponent todos={this.props.todos}/>}/>
+            {/* <Route exact path="/" component = {() => <HomeComponent todos={this.props.todos}/>}/> */}
+            <Route exact path="/" component = {HomeComponent}/>
             <Route path="/login" component = {LoginComponent}/>
             <Route path="/register" component = {RegistrationComponent}/>
             <Route path="/add" component = {CreateTaskComponent}/>
@@ -33,9 +36,12 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  children: PropTypes.object.isRequired
-}
+
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     todos : state.todos
+//   }
+// }
 
 export default App;
 

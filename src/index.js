@@ -1,29 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { BrowserRouter } from 'react-router-dom';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import promise from  'redux-promise'
+// import createLogger from 'redux-logger';
 
-// import registerServiceWorker from './registerServiceWorker';
-import {BrowserRouter} from 'react-router-dom';
+import App from './App';
 
-const state = {
-    todos: [
-        { id: 1, name: 'Go to the market'},
-        { id: 2, name: 'Cook Egusi soup'},
-        { id: 3, name: 'Have a good shower'},
-        { id: 4, name: 'Get some sleep'}
-    ]
-}
+// import { loadTodos } from './Actions/loadTodos';
 
-const store = createStore();
+import allReducers from './Reducer';
+
+// const logger = createLogger();
+const middlewares = [ thunk, promise ]
+const store = createStore(allReducers, {}, applyMiddleware(...middlewares));
+
+// store.dispatch(loadTodos(state.todos))
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <App todos={state.todos}/>
+            <App />
         </BrowserRouter>
     </Provider>,
-    document.getElementById('root'))
-    ;
-// registerServiceWorker();
+    document.getElementById('root')
+);
