@@ -9,7 +9,7 @@ import promise from  'redux-promise'
 
 import App from './App';
 
-// import { loadTodos } from './Actions/loadTodos';
+import { actions } from './Actions/';
 
 import allReducers from './Reducer';
 
@@ -17,7 +17,18 @@ import allReducers from './Reducer';
 const middlewares = [ thunk, promise ]
 const store = createStore(allReducers, {}, applyMiddleware(...middlewares));
 
-// store.dispatch(loadTodos(state.todos))
+// Mocked todos
+const tasks = {
+    todos: [
+        { id: 1, name: 'Go to the market'},
+        { id: 2, name: 'Cook Egusi soup'},
+        { id: 3, name: 'Have a good shower'},
+        { id: 4, name: 'Get some sleep'}
+    ]
+}
+
+// Call to get a list of todos
+store.dispatch(actions.loadTodos(tasks.todos))
 
 ReactDOM.render(
     <Provider store={store}>
