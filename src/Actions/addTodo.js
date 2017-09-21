@@ -1,7 +1,8 @@
+import * as types from './typeConstants';
+
 const addTodo = (todo) => {
-    console.log('You trying to add a todo', todo)
     return {
-        type: "ADD_TODO",
+        type: types.ADD_TODO,
         payload: todo
     }
 }
